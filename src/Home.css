@@ -1,0 +1,131 @@
+/* Home.css */
+
+.menu-overlay {
+    height: 70px;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .menu-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    max-width: 1500px; /* Ajusta el ancho máximo según tus preferencias */
+    margin: 0 auto;
+  }
+  
+  .menu-items {
+    display: flex;
+  }
+  
+  .menu-item {
+    margin-right: 20px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .user-info {
+    margin-left: auto;
+    color: white;
+  }
+  
+
+.movie-carousel {
+  margin: 100px auto 20px; /* Ajuste para ubicar el carrusel más abajo */
+  width: 80%;
+}
+
+.movie-card {
+  padding: 10px;
+  text-align: center;
+  background-color: #fff; /* Fondo blanco para las tarjetas de película */
+  border-radius: 8px; /* Esquinas redondeadas */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+.movie-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px; /* Esquinas redondeadas para las imágenes */
+}
+
+/* Estilos para el carrusel */
+.slick-prev,
+.slick-next {
+  font-size: 24px;
+  color: #333;
+  z-index: 1;
+}
+
+.slick-prev {
+  left: -40px;
+}
+
+.slick-next {
+  right: -40px;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  color: #555;
+}
+
+.slick-dots {
+  bottom: -50px;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: #555;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #333;
+}
+ /* Estilos para las cartas de películas en la sección de Cartelera */
+.movie-card-horizontal {
+    display: flex;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .movie-card-horizontal img {
+    width: 150px;
+    height: auto;
+    border-radius: 8px 0 0 8px;
+  }
+  
+  .movie-info {
+    padding: 20px;
+    text-align: left;
+  }
+  .cartelera-container {
+    padding: 20px;
+  }
+  
+  .cartelera-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .cartelera-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  
+  .movie-card {
+    margin: 0 10px 20px 0;
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
