@@ -1,7 +1,9 @@
 // RegisterForm.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './RegisterForm.css';
+import { Container, Form, Button, Row, Col } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './RegisterForm.css'; 
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -82,107 +84,119 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="container">
-      <h2>Registro</h2>
-      {formError && <p className="error">{formError}</p>}
+    <Container className="mt-5">
+      <Row className="justify-content-center">
+        <Col xs={12} md={8} lg={6}>
+          <Form className="p-4 shadow-lg register-form rounded" onSubmit={handleSubmit}>
+            <h2 className="mb-4 text-center">Registro</h2>
+            {formError && <p className="text-danger text-center">{formError}</p>}
 
-      <form onSubmit={handleSubmit} className="register-form">
-        <div>
-          <label>Tipo de Documento</label>
-          <select
-            name="documentType"
-            value={formData.documentType}
-            onChange={handleChange}
-          >
-            <option value="">Seleccionar tipo de documento</option>
-            <option value="CC">Cédula de Ciudadanía</option>
-            <option value="TI">Tarjeta de Identidad</option>
-            <option value="CE">Cédula de Extranjería</option>
-          </select>
-        </div>
+            <Form.Group>
+              <Form.Label>Tipo de Documento</Form.Label>
+              <Form.Control
+                as="select"
+                name="documentType"
+                value={formData.documentType}
+                onChange={handleChange}
+              >
+                <option value="">Seleccionar tipo de documento</option>
+                <option value="CC">Cédula de Ciudadanía</option>
+                <option value="TI">Tarjeta de Identidad</option>
+                <option value="CE">Cédula de Extranjería</option>
+              </Form.Control>
+            </Form.Group>
 
-        <div>
-          <label>Número de Documento</label>
-          <input
-            type="text"
-            name="documentNumber"
-            value={formData.documentNumber}
-            onChange={handleChange}
-            className={documentError ? 'error-input' : ''}
-          />
-          {documentError && <p className="error">{documentError}</p>}
-        </div>
+            <Form.Group>
+              <Form.Label>Número de Documento</Form.Label>
+              <Form.Control
+                type="text"
+                name="documentNumber"
+                value={formData.documentNumber}
+                onChange={handleChange}
+                className={documentError ? 'is-invalid' : ''}
+              />
+              {documentError && <Form.Text className="text-danger">{documentError}</Form.Text>}
+            </Form.Group>
 
-        <div>
-          <label>Nombre</label>
-          <input
-            type="text"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-          />
-        </div>
+            <Form.Group>
+              <Form.Label>Nombre</Form.Label>
+              <Form.Control
+                type="text"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+              />
+            </Form.Group>
 
-        <div>
-          <label>Apellido</label>
-          <input
-            type="text"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-          />
-        </div>
+            <Form.Group>
+              <Form.Label>Apellido</Form.Label>
+              <Form.Control
+                type="text"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+              />
+            </Form.Group>
 
-        <div>
-          <label>Correo Electrónico</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </div>
+            <Form.Group>
+              <Form.Label>Correo Electrónico</Form.Label>
+              <Form.Control
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </Form.Group>
 
-        <div>
-          <label>Contraseña</label>
-          <input
-            type={showPassword ? 'text' : 'password'}
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            className={passwordError ? 'error-input' : ''}
-          />
-          <input
-            type="checkbox"
-            onChange={handleShowPassword}
-            checked={showPassword}
-          />
-          <span>Mostrar Contraseña</span>
-          {passwordError && <p className="error">{passwordError}</p>}
-        </div>
+            <Form.Group>
+              <Form.Label>Contraseña</Form.Label>
+              <Form.Control
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                className={passwordError ? 'is-invalid' : ''}
+              />
+              <Form.Check
+                type="checkbox"
+                label="Mostrar Contraseña"
+                onChange={handleShowPassword}
+                checked={showPassword}
+              />
+              {passwordError && <Form.Text className="text-danger">{passwordError}</Form.Text>}
+            </Form.Group>
 
-        <div>
-          <label>Confirmar Contraseña</label>
-          <input
-            type={showConfirmPassword ? 'text' : 'password'}
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            className={confirmPasswordError ? 'error-input' : ''}
-          />
-          <input
-            type="checkbox"
-            onChange={handleShowConfirmPassword}
-            checked={showConfirmPassword}
-          />
-          <span>Mostrar Contraseña</span>
-          {confirmPasswordError && <p className="error">{confirmPasswordError}</p>}
-        </div>
+            <Form.Group>
+              <Form.Label>Confirmar Contraseña</Form.Label>
+              <Form.Control
+                type={showConfirmPassword ? 'text' : 'password'}
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                className={confirmPasswordError ? 'is-invalid' : ''}
+              />
+              <Form.Check
+                type="checkbox"
+                label="Mostrar Contraseña"
+                onChange={handleShowConfirmPassword}
+                checked={showConfirmPassword}
+              />
+              {confirmPasswordError && <Form.Text className="text-danger">{confirmPasswordError}</Form.Text>}
+            </Form.Group>
 
-        <button type="submit">Registrarse</button>
-      </form>
-    </div>
+            <Button variant="primary" type="submit" className="w-100 mt-3">
+              Registrarse
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
 export default RegisterForm;
+
+
+
+
+

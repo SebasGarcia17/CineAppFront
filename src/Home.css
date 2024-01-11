@@ -1,63 +1,66 @@
-/* Home.css */
-
+/* Barra de Navegación */
 .menu-overlay {
-    height: 70px;
-    background-color: black;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-  }
-  
-  .menu-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    max-width: 1500px; /* Ajusta el ancho máximo según tus preferencias */
-    margin: 0 auto;
-  }
-  
-  .menu-items {
-    display: flex;
-  }
-  
-  .menu-item {
-    margin-right: 20px;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .user-info {
-    margin-left: auto;
-    color: white;
-  }
-  
+  height: 100px;
+  background-color: #899eb3; /* Color oscuro según la paleta de Bootstrap */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
 
+.menu-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.menu-items {
+  display: flex;
+}
+
+.menu-item {
+  margin-right: 30px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.menu-item:hover {
+  color: #f8c11e; /* Amarillo de Bootstrap */
+}
+
+.user-info {
+  margin-left: auto;
+  color: #070707;
+}
+
+/* Carrusel de Películas */
 .movie-carousel {
-  margin: 100px auto 20px; /* Ajuste para ubicar el carrusel más abajo */
-  width: 80%;
+  margin-top: 80px;
+  width: 45%;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+  background-color: #070707;
+  
+}
+.carousel-caption {
+  color: #f8f7f7; /* Color negro para el texto dentro de Carousel.Caption */
+  background-color: #0e0e0e;
 }
 
-.movie-card {
-  padding: 10px;
-  text-align: center;
-  background-color: #fff; /* Fondo blanco para las tarjetas de película */
-  border-radius: 8px; /* Esquinas redondeadas */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra */
-}
 
-.movie-card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 5px; /* Esquinas redondeadas para las imágenes */
-}
 
-/* Estilos para el carrusel */
 .slick-prev,
 .slick-next {
   font-size: 24px;
-  color: #333;
+  color: #fff;
   z-index: 1;
 }
 
@@ -71,61 +74,75 @@
 
 .slick-prev:hover,
 .slick-next:hover {
-  color: #555;
+  color: #f8c11e;
 }
 
 .slick-dots {
-  bottom: -50px;
+  bottom: -30px;
 }
 
 .slick-dots li button:before {
   font-size: 12px;
-  color: #555;
+  color: #fff;
 }
 
 .slick-dots li.slick-active button:before {
-  color: #333;
+  color: #f8c11e;
 }
- /* Estilos para las cartas de películas en la sección de Cartelera */
-.movie-card-horizontal {
-    display: flex;
-    margin-bottom: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .movie-card-horizontal img {
-    width: 150px;
-    height: auto;
-    border-radius: 8px 0 0 8px;
-  }
-  
-  .movie-info {
-    padding: 20px;
-    text-align: left;
-  }
-  .cartelera-container {
-    padding: 20px;
-  }
-  
-  .cartelera-title {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .cartelera-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-  
-  .movie-card {
-    margin: 0 10px 20px 0;
-    padding: 10px;
-    text-align: center;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
+
+/* Sección de Cartelera */
+.cartelera-container {
+  padding: 400px;
+  background-color: #0b0b0b; /* Gris claro según la paleta de Bootstrap */
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.cartelera-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #899eb3; /* Negro según la paleta de Bootstrap */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cartelera-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.movie-card {
+  width: calc(33.333% - 20px);
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+.movie-card img {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.movie-info {
+  padding: 15px;
+  text-align: left;
+  background-color: #fff;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* Añadir clases de Bootstrap a elementos específicos */
+.menu-overlay,
+.carousel,
+.cartelera-container {
+  margin-bottom: 0; /* Eliminar el espacio por defecto que añade Bootstrap al final del cuerpo */
+}
   

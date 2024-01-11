@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Slider from 'react-slick';
+import { Carousel, Container, Row, Col } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './Home.css';
@@ -48,32 +49,6 @@ const Home = ({ user }) => {
     fetchMoviesInCartelera();
   }, []);
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
-
   const handleCarteleraClick = () => {
     if (carteleraRef.current) {
       window.scrollTo({
@@ -86,16 +61,18 @@ const Home = ({ user }) => {
   return (
     <div>
       <header className="menu-overlay">
-        <nav className="navbar">
-          <div className="menu-container">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <div className="container-fluid">
             <div className="logo-container">
               <img className="logo" src={`http://img.omdbapi.com/?apikey=cceab111&`} alt="Logo" />
             </div>
-            <div className="menu-items">
-              <div className="menu-item" onClick={handleCarteleraClick}>
-                Cartelera
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <div className="navbar-nav">
+                <div className="nav-item nav-link" onClick={handleCarteleraClick}>
+                  Cartelera
+                </div>
+                <div className="nav-item nav-link">Lista de Reservas</div>
               </div>
-              <div className="menu-item">Lista de Reservas</div>
             </div>
             <div className="user-info">
               Usuario: {userName}
@@ -103,20 +80,30 @@ const Home = ({ user }) => {
           </div>
         </nav>
       </header>
-      <Slider {...settings} className="movie-carousel">
-        {movies.map((movie) => (
-          <div key={movie.imdbID} className="movie-card-horizontal">
-            <img src={movie.details.Poster} alt={movie.title} />
-            <div className="movie-info">
-              <h3>{movie.title}</h3>
-              <p>{movie.details.Plot}</p>
-              <p>Género: {movie.details.Genre}</p>
-              <p>Duración: {movie.details.Runtime}</p>
-              <p>Formato: {movie.details.Type}</p>
-            </div>
-          </div>
-        ))}
-      </Slider>
+      <Container fluid>
+        <Row className="justify-content-center">
+          <Col xs={12} md={8}>
+            <Carousel className="movie-carousel">
+              {movies.map((movie) => (
+                <Carousel.Item key={movie.imdbID}>
+                  <img
+                    className="d-block w-100"
+                    src={movie.details.Poster}
+                    alt={movie.title}
+                  />
+                  <Carousel.Caption>
+                    <h3>{movie.title}</h3>
+                    <p>{movie.details.Plot}</p>
+                    <p>Género: {movie.details.Genre}</p>
+                    <p>Duración: {movie.details.Runtime}</p>
+                    <p>Formato: {movie.details.Type}</p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+              ))}
+            </Carousel>
+          </Col>
+        </Row>
+      </Container>
       <div ref={carteleraRef} className="cartelera-container">
         <h2 className="cartelera-title">Cartelera</h2>
         <div className="cartelera-cards">
@@ -138,5 +125,7 @@ const Home = ({ user }) => {
   );
 };
 
-export default Home;
+export default Home;/* Home.css */
+
+
 
